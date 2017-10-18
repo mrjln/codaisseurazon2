@@ -2,8 +2,12 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order_item = @order_items.new(order_item_params)
-    @order.save
-    session[:order_id] = @order.id
+
+    if @order.save?
+      notice: "Your item has been saved to your cart"
+      session[:order_id] = @order.id
+    else
+      notice: "something went wrong"
   end
 
   def update
