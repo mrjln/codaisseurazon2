@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :products, only: [:index, :show]
+
   resources :carts
   resources :order_items
   resources :profiles, only: [:new, :edit, :create, :update]

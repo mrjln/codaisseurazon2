@@ -1,4 +1,8 @@
 class OrderItemsController < ApplicationController
+before_action :set_product
+
+def index;
+end
 
   def create
     @order = current_order
@@ -28,6 +32,10 @@ end
 
 
   private
+
+  def set_product
+    @product = Product.all
+  end
 
   def order_item_params
     params
