@@ -1,14 +1,19 @@
 class OrderItemsController < ApplicationController
+before_action :set_product
+
+def index;
+end
+
   def create
     @order = current_order
-    @order_item = @order_items.new(order_item_params)
-
-    if @order.save?
-      notice: "Your item has been saved to your cart"
+    @order_item = OrderItem.new(order_item_params)
+    if @order.save
       session[:order_id] = @order.id
+      redirect_to order_items_url, notice: "Your item has been saved to your cart"
     else
-      notice: "something went wrong"
+      redirect_to order_items_url, notice: "something went wrong"
   end
+end
 
   def update
     @order = current_order
@@ -22,6 +27,10 @@ class OrderItemsController < ApplicationController
 
 
   private
+
+  def set_product
+    @product = Product.all
+  end
 
   def order_item_params
     params

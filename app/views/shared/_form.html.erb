@@ -6,7 +6,7 @@
     </div>
     <div class="col-xs-4">
 
-      <%= form_for [@order_item], remote: true do |f| %>
+      <%= form_for [@order_item], html: {multipart: true} do |f| %>
       <h4 class="text-right">Price: <span style="color: green"> €<%= @product.price %></span></h4>
           <p>Amount</p>
         <div class="input-group">
