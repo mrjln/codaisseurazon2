@@ -4,4 +4,20 @@
 
 <h4> € <%= @product.price %> </h4>
 
-<%= render "shared/form" %>
+<% @product.photos.each do |photo| %>
+  <%= image_tag photo.image.thumbnail %>
+  <% end %>
+
+<%= link_to "ADD TO CART", cart_path(id: @product.id), method: :put %>
+
+
+<%= current_cart %>
+
+<h1> Your Shopping Cart </h1>
+<% current_cart.each do |product_id|%>
+ <% @product = Product.find(product_id) %>
+ <ul>
+ <li> <%= @product.name %> </li>
+ <li> <%= @product.price %> </li>
+ </ul>
+ <% end %>
