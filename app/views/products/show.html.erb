@@ -14,7 +14,6 @@
 <%= current_cart %>
 
 <h1> Your Shopping Cart </h1>
-
 <% current_cart.each do |product_id|%>
  <% @product = Product.find(product_id) %>
  <ul>
