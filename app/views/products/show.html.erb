@@ -8,4 +8,6 @@
   <%= image_tag photo.image.thumbnail %>
   <% end %>
 
-<%= render "shared/form" %>
+<%= link_to "ADD TO CART", cart_path(id: @product.id), method: :put %>
+
+<%= current_cart %>

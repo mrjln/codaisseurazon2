@@ -1,15 +1,16 @@
 class ShoppingCart
   attr_reader :products
 
-  def initialize(session = {})
+#  def initialize(session = {})
   #  @products = []
-    @session_lines = session[:shopping_cart] || []
+#    @session_lines = session[:shopping_cart] || []
     #find session with value shopping cart, OR store an empy array
-    @orderlines = session_lines.map do |line|
-      Orderline.from_hash(line)
+#    @order_lines = @session_lines.map do |line|
+#      Orderline.from_hash(line)
 #.map is converting a collection of something into another collection
-#this is like .new, but with superpowers 
-    end
+#this is like .new, but with superpowers
+#    end
+# end
 
   def add_product(product, amount = 1)
     raise ArgumentError.new("This is not a product") unless product.is_a? Product
@@ -47,10 +48,8 @@ class ShoppingCart
         order_line = OrderLine.new(product, line_hash[:amount])
         order_line.added_at = line_hash[:added_at]
         order_line.price = line_hash[:price]
-
-      end
+        end
     end
-
 
 
 
