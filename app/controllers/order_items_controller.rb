@@ -1,37 +1,15 @@
 class OrderItemsController < ApplicationController
 before_action :set_product
+before_action :get_current_order
 
   def create
-    @order = current_order
-    @order_item = OrderItem.new(order_item_params)
-
-    if @order.save
-      session[:order_id] = @order.id
-      redirect_to order_items_url, notice: "Your item has been saved to your cart"
-    else
-      redirect_to order_items_url, notice: "something went wrong"
-    end
-    session[:order_id] = @order.id
+    session[:order] || = {}
+    product_id = order_items_params[:product_id]
+    amount = order_items_params[:amount]
+    session[:order][product_id] || = 0
+    session[:order][product_id] += amount
+    redirect_to products_path
   end
-
-  def update
-    @order = current_order
-    @order_item = @order.order_items.find(params[:id])
-    if @order_item.update_attributes(order_item_params)
-      redirect_to @order, notice: "Added to chart"
-    @order_items = @order.order_items
-    else
-      render :edit
-  end
-end
-
-  def destroy
-    @order = current_order
-    @order_item = @order.order_items.find(params[:id])
-    @order_item.destroy
-    @order_items = @order.order_items
-  end
-
 
   private
 
@@ -42,7 +20,17 @@ end
   def order_item_params
     params
     .require(:order_item)
-    .permit(:amount, :product_id)
+    .permit(:product_id, :amount)
   end
+
+  def get_current_order
+    if !session[:order_id].nil?
+      @current_order = Order.find(session[:order_id])
+    else
+      @current_order = Order.create
+      @order_id = session[:order_id]
+   end
+ end
+
 
 end
