@@ -4,4 +4,8 @@
 
 <h4> € <%= @product.price %> </h4>
 
+<% @product.photos.each do |photo| %>
+  <%= image_tag photo.image.thumbnail %>
+  <% end %>
+
 <%= render "shared/form" %>

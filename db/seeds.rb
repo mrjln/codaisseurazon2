@@ -1,4 +1,5 @@
 #Create some products
+Photo.destroy_all
 Product.destroy_all
 
 product_1 = Product.create!({
@@ -32,3 +33,10 @@ product_4 = Product.create!({
 name: "Elf",
 description: "An elf (plural: elves) is a type of human-shaped supernatural being in Germanic mythology and folklore. In medieval Germanic-speaking cultures, elves seem generally to have been thought of as beings with magical powers and supernatural beauty, ambivalent towards everyday people and capable of either helping or hindering them.[1] However, the details of these beliefs have varied considerably over time and space, and have flourished in both pre-Christian and Christian cultures.",
 price: 5325 })
+
+
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/du3yzngfr/image/upload/v1508427882/Kangaroo_kjju0b.jpg", product: product_1)
+photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/du3yzngfr/image/upload/v1508427882/Elephant_icxbhx.jpg", product: product_2)
+photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/du3yzngfr/image/upload/v1508427883/Giraffe_amdnyh.jpg", product: product_3)
+photo4 = Photo.create!(remote_image_url: "http://res.cloudinary.com/du3yzngfr/image/upload/v1508427883/elf_cz311r.png", product: product_4)
+
