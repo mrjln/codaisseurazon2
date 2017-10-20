@@ -1,4 +1,14 @@
-<div class="shopping-cart">
-  <h1> Your Shopping Cart </h1>
 
-</div>
+<h1> Your Shopping Cart </h1>
+
+<p> You now have <%= current_cart.count %> products in your cart </p>
+
+
+<% current_cart.each do |product_id|%>
+ <% @product = Product.find(product_id) %>
+ <ul>
+ <li> <%= @product.name %> - € <%= @product.price %> </li>
+   <% @product.price = @productprice %>
+ </ul>
+ <% end %>
+<%= link_to "PROCEED TO CHECKOUT" %>

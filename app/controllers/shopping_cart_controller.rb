@@ -2,7 +2,6 @@ class ShoppingCartController < ApplicationController
   before_action :initiate_cart
 
   def index
-    #show contents @cart
   end
 
   def create

@@ -35,10 +35,12 @@
               <li role="separator" class="divider"></li>
               <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             </ul>
+            
+            <li><%= link_to "Cart", cart_path %></li>
 
         </li>
         <% end %>
-         <li><%= link_to "Cart", cart_path %></li>
+
       </ul>
     </div>
   </div>
