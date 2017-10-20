@@ -1,8 +1,8 @@
-<h1> YOUR CART</h1>
-
+<h1> Your Current Shopping Cart </h1>
 <% current_cart.each do |product_id|%>
  <% @product = Product.find(product_id) %>
  <ul>
  <li> <%= @product.name %> </li>
+ <li> <%= @product.price %> </li>
  </ul>
  <% end %>
