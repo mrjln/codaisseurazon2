@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
   def show
-    @order_items = current_order.order_items
+    @current_cart
   end
 
   def index
@@ -13,6 +13,4 @@ class CartsController < ApplicationController
     current_cart << @product.id
     session[:shopping_cart] = current_cart
   end
-
-
 end
