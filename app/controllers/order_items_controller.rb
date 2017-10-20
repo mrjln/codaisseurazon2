@@ -1,9 +1,6 @@
 class OrderItemsController < ApplicationController
 before_action :set_product
 
-def index;
-end
-
   def create
     @order = current_order
     @order_item = OrderItem.new(order_item_params)
@@ -13,8 +10,9 @@ end
       redirect_to order_items_url, notice: "Your item has been saved to your cart"
     else
       redirect_to order_items_url, notice: "something went wrong"
+    end
+    session[:order_id] = @order.id
   end
-end
 
   def update
     @order = current_order
@@ -28,6 +26,10 @@ end
 end
 
   def destroy
+    @order = current_order
+    @order_item = @order.order_items.find(params[:id])
+    @order_item.destroy
+    @order_items = @order.order_items
   end
 
 
